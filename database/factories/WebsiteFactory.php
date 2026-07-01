@@ -1,0 +1,27 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Website;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Website>
+ */
+class WebsiteFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'client_id' => \App\Models\Client::factory(),
+            'url' => 'https://' . fake()->unique()->domainName(),
+            'is_up' => true,
+            'last_checked_at' => now(),
+        ];
+    }
+}
